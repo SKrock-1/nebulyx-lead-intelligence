@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+.venv/
+venv/
+env/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Instagram Session & Cookies (Sensitive)
+lead_scraper/auth_state.json
+lead_scraper/session_meta.json
+
+# Live Scraped Leads & Captured Transient Media
+lead_scraper/scraped_leads.json
+lead_scraper/scraped_leads.csv
+lead_scraper/assets/captured/
+lead_scraper/captured_media/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nebulyx-lead-crm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nebulyx_lead_crm
+    restart: unless-stopped
+    ports:
+      - "8088:8088"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8088
+      - PYTHONUNBUFFERED=1
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-}
+    volumes:
+      # Persist discovered leads and session state across container updates
+      - ./lead_scraper/scraped_leads.json:/app/lead_scraper/scraped_leads.json
+      - ./lead_scraper/scraped_leads.csv:/app/lead_scraper/scraped_leads.csv
+      - ./lead_scraper/auth_state.json:/app/lead_scraper/auth_state.json
